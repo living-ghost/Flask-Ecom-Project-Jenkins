@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flask E-commerce App</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_base.css') }}">
+  <style>
+    
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="{{ url_for('main.common_home') }}">E-commerce</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto"> <!-- ml-auto for right alignment -->
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('main.common_home') }}">Home</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container mt-4">
+    <h3>{{ welcome_msg }}</h3>
+    {% block content %}{% endblock %}
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section col-lg-6 col-md-12">
+          <h6 class="text-uppercase">E-commerce</h6>
+          <p>Your go-to platform for all your shopping needs.</p>
+        </div>
+        <div class="footer-section col-lg-3 col-md-6">
+          <h6 class="text-uppercase">Quick Links</h6>
+          <ul class="list-unstyled">
+            <li>
+              <a href="{{ url_for('main.common_home') }}" class="text-dark">Home</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section col-lg-3 col-md-6">
+          <h6 class="text-uppercase">Contact Us</h6>
+          <p class="text-dark">support@ecommerce.com</p>
+          <p class="text-dark">+1 234 567 890</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        © 2024 E-commerce. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>

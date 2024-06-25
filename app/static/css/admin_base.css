@@ -1,0 +1,33 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.container {
+  flex: 1;
+  padding-top: 20px;
+}
+footer {
+  background-color: #f8f9fa;
+  padding: 0px 0;
+}
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.footer-section {
+  margin-bottom: 0px;
+}
+.footer-section h6 {
+  margin-bottom: 10px;
+}
+.footer-bottom {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px 0;
+  text-align: center;
+}

@@ -1,0 +1,33 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                User Management
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="{{ url_for('main.admin_add_user') }}">Add Users</a></li>
+                    <li class="list-group-item"><a href="#">Block Users</a></li>
+                    <!-- Add more options if needed -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                Product Management
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="{{ url_for('main.admin_add_product') }}">Add Products</a></li>
+                    <!-- Add more options if needed -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
