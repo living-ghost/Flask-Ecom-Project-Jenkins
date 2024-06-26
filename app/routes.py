@@ -103,3 +103,56 @@ def admin_add_product():
 def admin_edit_product():
     return render_template('admin_edit_product.html')
 
+
+# user registration
+@main.route('/user_register', methods=['POST', 'GET'])
+def user_register():
+    if request.method == 'POST':
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+        
+        existing_user = User.query.filter((User.username == username) | (User.email == email)).first()
+        if existing_user:
+            flash("Username or email already exists", "warning")
+            return redirect(url_for('main.user_register'))
+        else:
+            add_user = User(username=username, email=email, password=password)
+            db.session.add(add_user)
+            db.session.commit()
+            flash("Admin account created successfully", "success")
+            return redirect(url_for('main.user_login'))
+    return render_template('user_register.html')
+
+# user login
+@main.route('/user_login', methods=['GET', 'POST'])
+def user_login():
+    welcome_msg = "Happy Login :)"
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        existing_user = User.query.filter_by(username=username).first()
+        if existing_user and existing_user.check_password(password):
+            login_user(existing_user)
+            return redirect(url_for('main.user_home'))
+        else:
+            flash("Username or password is incorrect", "warning")
+            return redirect(url_for('main.user_login'))
+    return render_template('user_login.html', welcome_msg=welcome_msg)
+
+# user logout
+@main.route('/user_logout')
+@login_required
+def user_logout():
+    logout_user()
+    session.clear()
+    flash("You have been logged out", "info")
+    response = make_response(redirect(url_for('main.common_home')))
+    response.set_cookie('session', '', expires=0)
+    return response
+
+# user home
+@main.route('/user_home')
+@login_required
+def user_home():
+    return render_template('user_home.html')
