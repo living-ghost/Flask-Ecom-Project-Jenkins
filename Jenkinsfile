@@ -31,7 +31,7 @@ pipeline {
 
         stage('Run Flask App') {
             steps {
-                bat 'venv\\Scripts\\activate && python app.py'
+                bat 'venv\\Scripts\\activate && python run.py'
             }
         }
     }
