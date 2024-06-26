@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://your-repository-url.git'
+                git 'https://github.com/living-ghost/Flask-Ecommerce-Project-Beginner-Friendly-.git'
             }
         }
 
