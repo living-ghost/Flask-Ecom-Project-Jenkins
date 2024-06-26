@@ -34,24 +34,5 @@ pipeline {
                 bat 'venv\\Scripts\\activate && python run.py'
             }
         }
-        stage('Stop Flask App') {
-            steps {
-                script {
-                    // Find Flask app process ID using PowerShell
-                    def flaskProcess = powershell(returnStdout: true, script: '''
-                        Get-Process python | Where-Object { $_.MainWindowTitle -like "*cmd*" } | Select-Object -ExpandProperty Id
-                    ''').trim()
-                    if (flaskProcess) {
-                        bat "taskkill /PID ${flaskProcess} /F"
-                    }
-                }
-            }
-        }
-        stage('Post-Execution Cleanup') {
-            steps {
-                echo 'Pipeline execution complete.'
-                // Optionally add commands to clean up or stop the Flask app if needed
-            }
-        }
     }
 }
