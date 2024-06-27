@@ -152,7 +152,7 @@ def user_logout():
     return response
 
 # user home
-@main.route('/user_home')
+@main.route('/user_home'
 @login_required
 def user_home():
     return render_template('user_home.html')
